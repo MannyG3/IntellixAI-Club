@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">IntelliXAI AI and Robotics Club logo</title>
+  <desc id="desc">Circular black and white robotics club badge with a stylized robot and circuit lines.</desc>
+  <rect width="512" height="512" fill="#05070b"/>
+  <g fill="none" stroke="#f5f7fa" stroke-width="8"><circle cx="256" cy="256" r="224"/><circle cx="256" cy="256" r="190"/><path d="M68 332h376M92 360h328"/><path d="M132 119h248M116 393h280" stroke-width="5"/></g>
+  <g fill="#f5f7fa" font-family="Arial, sans-serif" font-weight="700" text-anchor="middle"><text x="256" y="91" font-size="40" letter-spacing="8">INTELLIXAI</text><text x="256" y="382" font-size="22" letter-spacing="3">AI AND ROBOTICS CLUB</text><text x="256" y="427" font-size="28" letter-spacing="8">RITP</text></g>
+  <g fill="#05070b" stroke="#f5f7fa" stroke-width="8"><path d="M155 210v-46l35-30h132l35 30v46l-24 42H179z"/><circle cx="213" cy="176" r="24"/><circle cx="299" cy="176" r="24"/><path d="M256 210v27l-20 17h40l-20-17M256 129V108"/><path d="M176 250l-15 72h45l12-50M336 250l15 72h-45l-12-50"/><path d="M190 291h132v55H190z"/><path d="M212 315h20M250 315h20M288 315h20M215 346l-30 20m112-20 30 20M256 346v32"/></g>
+  <g fill="#f5f7fa"><circle cx="185" cy="366" r="5"/><circle cx="327" cy="366" r="5"/><circle cx="256" cy="378" r="5"/><rect x="100" y="243" width="10" height="10"/><rect x="402" y="243" width="10" height="10"/></g>
+</svg>
