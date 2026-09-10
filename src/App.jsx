@@ -13,11 +13,13 @@ import {
   ScanFace,
   Send,
   Sparkles,
+  Sun,
   X,
   Zap,
 } from 'lucide-react'
 import clubLogo from './assets/intellixai-logo.jpeg'
 import mayurGundPhoto from './assets/Mayur-Gund.png'
+import modelCompetitionImage from './assets/model compitetion .jpeg'
 import vikramsinhSastePhoto from './assets/vikramsinh-saste.jpeg'
 import './App.css'
 
@@ -38,9 +40,9 @@ const projects = [
 ]
 
 const events = [
-  { date: '18', month: 'OCT', title: 'Build Night: Robots', category: 'WORKSHOP', text: 'Prototype a working bot in one evening with the Robotics Cell.' },
+  { date: 'TBA', month: '2026', title: 'Model Presentation Competition', category: 'COMPETITION', text: 'Present an AI, ML, robotics or automation model to faculty and industry guests. Explain the problem, demonstrate the build and compete with fellow student teams.', image: modelCompetitionImage },
   { date: '02', month: 'NOV', title: 'IntelliXAI Hack Day', category: 'HACKATHON', text: '24 hours. One bold idea. A room full of makers.' },
-  { date: '21', month: 'NOV', title: 'Model Presentation Competition', category: 'COMPETITION', text: 'Present your AI, robotics or automation model to a panel of faculty and industry guests. Build a clear story, demonstrate the prototype and compete for recognition.', image: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=500&q=85' },
+  { date: '18', month: 'OCT', title: 'Build Night: Robots', category: 'WORKSHOP', text: 'Prototype a working bot in one evening with the Robotics Cell.' },
 ]
 
 const coordinators = [
@@ -93,14 +95,17 @@ function CountUp({ value, suffix }) {
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [filter, setFilter] = useState('All')
+  const [lightTheme, setLightTheme] = useState(() => localStorage.getItem('intellixai-theme') === 'light')
   const filteredProjects = filter === 'All' ? projects : projects.filter((project) => project.type === filter)
   const navItems = ['About', 'Projects', 'Events', 'Team', 'Lab F08', 'Contact']
+  const toggleTheme = () => setLightTheme((current) => { const next = !current; localStorage.setItem('intellixai-theme', next ? 'light' : 'dark'); return next })
 
   return (
-    <div className="site-shell">
+    <div className={`site-shell ${lightTheme ? 'theme-light' : ''}`}>
       <nav className={`navbar ${menuOpen ? 'menu-active' : ''}`}>
         <a className="brand" href="#home" onClick={() => setMenuOpen(false)}><img className="brand-logo" src={clubLogo} alt="IntelliXAI AI and Robotics Club logo" /><span><strong>IntelliXAI</strong><small>AI & Robotics Club</small></span></a>
         <div className="nav-links">{navItems.map((item) => <a key={item} href={`#${item.toLowerCase().replace(' ', '-')}`}>{item}</a>)}</div>
+        <button className="theme-toggle" type="button" onClick={toggleTheme} aria-label={`Switch to ${lightTheme ? 'dark' : 'light'} theme`} title={`Switch to ${lightTheme ? 'dark' : 'light'} theme`}><Sun size={16} /><span>{lightTheme ? 'Dark' : 'Light'}</span></button>
         <a className="nav-cta" href="#contact">Join the Club <ArrowUpRight size={15} /></a>
         <button className="menu-button" aria-label="Toggle menu" onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X /> : <Menu />}</button>
       </nav>
@@ -129,7 +134,7 @@ function App() {
 
         <section className="section projects-section" id="projects"><div className="section-heading split-heading"><div><Reveal><span className="kicker">/ 03 — SELECTED BUILDS</span><h2>Ideas into machines.<br /><span>Data into intelligence.</span></h2></Reveal></div><Reveal className="heading-note"><a className="arrow-link" href="#contact">See all projects <ArrowUpRight size={16} /></a></Reveal></div><div className="filter-row">{['All', 'AI', 'Robotics', 'IoT', 'Computer Vision'].map((item) => <button key={item} className={filter === item ? 'active' : ''} onClick={() => setFilter(item)}>{item}</button>)}</div><div className="project-grid">{filteredProjects.map((project, i) => <Reveal key={project.title} delay={i * 0.08} className={project.featured ? 'featured-project' : ''}><article className={`project-card ${project.featured ? 'featured' : ''}`}><div className="project-image" style={{ backgroundImage: `url(${project.image})` }}><span className="project-type">{project.type}</span><span className="project-index">0{i + 1}</span></div><div className="project-info"><div><h3>{project.title}</h3><p>{project.description}</p></div><div className="project-meta"><span>{project.team}</span><div>{project.tags.map((tag) => <b key={tag}>{tag}</b>)}</div></div></div></article></Reveal>)}</div></section>
 
-        <section className="section event-section" id="events"><div className="section-heading split-heading"><div><Reveal><span className="kicker">/ 04 — THE CALENDAR</span><h2>Learn. Compete.<br /><span>Create.</span></h2></Reveal></div><Reveal className="heading-note"><p>There is always something powering up in F08.</p></Reveal></div><div className="event-layout"><Reveal className="upcoming-event"><span className="event-label"><span className="pulse-dot" /> NEXT UP</span><div className="big-date"><strong>18</strong><span>OCT<br />2026</span></div><h3>Build Night: Robots</h3><p>Prototype a working bot in one evening with the Robotics Cell. Bring your curiosity, we will bring the kits.</p><a className="button button-outline" href="#contact">Save your spot <ArrowUpRight size={16} /></a></Reveal><div className="event-list">{events.slice(1).map((event, i) => <Reveal key={event.title} delay={i * 0.1}><article className="event-row">{event.image && <div className="event-thumb" style={{ backgroundImage: `url(${event.image})` }} aria-label={`${event.title} event image`} />}<div className="mini-date"><strong>{event.date}</strong><span>{event.month}</span></div><div><span className="event-category">{event.category}</span><h3>{event.title}</h3><p>{event.text}</p></div><ArrowUpRight size={18} /></article></Reveal>)}</div></div></section>
+        <section className="section event-section" id="events"><div className="section-heading split-heading"><div><Reveal><span className="kicker">/ 04 — THE CALENDAR</span><h2>Learn. Compete.<br /><span>Create.</span></h2></Reveal></div><Reveal className="heading-note"><p>There is always something powering up in F08.</p></Reveal></div><div className="event-layout"><Reveal className="upcoming-event"><div className="upcoming-event-image" style={{ backgroundImage: `url(${events[0].image})` }} aria-label={`${events[0].title} event image`} /><span className="event-label"><span className="pulse-dot" /> FEATURED EVENT</span><div className="big-date"><strong>{events[0].date}</strong><span>{events[0].month}<br />DATE TO BE ANNOUNCED</span></div><h3>{events[0].title}</h3><p>{events[0].text}</p><a className="button button-outline" href="#contact">Register interest <ArrowUpRight size={16} /></a></Reveal><div className="event-list">{events.slice(1).map((event, i) => <Reveal key={event.title} delay={i * 0.1}><article className="event-row">{event.image && <div className="event-thumb" style={{ backgroundImage: `url(${event.image})` }} aria-label={`${event.title} event image`} />}<div className="mini-date"><strong>{event.date}</strong><span>{event.month}</span></div><div><span className="event-category">{event.category}</span><h3>{event.title}</h3><p>{event.text}</p></div><ArrowUpRight size={18} /></article></Reveal>)}</div></div></section>
 
         <section className="stats-band"><div className="stats-inner">{stats.map((stat) => <div className="stat" key={stat.label} data-count={stat.value}><strong><CountUp value={stat.value} suffix={stat.suffix} /></strong><span>{stat.label}</span></div>)}</div></section>
 
